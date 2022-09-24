@@ -1,0 +1,115 @@
+// Variables
+$main-color: #0075ff;
+$hover-color: #0150ad;
+
+// Mixins
+@mixin flex($align, $justify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+@mixin grid($align, $justify) {
+  display: grid;
+  align-items: $align;
+  justify-items: $justify;
+}
+
+// Global
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
+
+// Main Style
+main {
+  background-color: #333;
+  width: 100%;
+  height: 100vh;
+  @include flex(center, center);
+  padding: 20px;
+  .container {
+    color: #fff;
+    width: 100%;
+    max-width: 300px;
+
+    @include flex(center, center);
+    flex-direction: column;
+    gap: 20px;
+    h1 {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .drum-pads {
+      @include grid(center, center);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      .drum-pad {
+        color: #fff;
+        background-color: #444;
+        width: 100%;
+        height: 75px;
+        font-size: 24px;
+        border: 3px solid $main-color;
+        border-radius: 15px;
+        user-select: none;
+        box-shadow: 0px 0px 15px 0px #222;
+        transition: 0.1s linear;
+        cursor: grab;
+        &.clicked {
+          transform: scale(0.9);
+          box-shadow: 0px 0px 5px 0px #222;
+        }
+        &:hover,
+        &.clicked {
+          border-color: $hover-color;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    #display {
+      font-size: 24px;
+      background-color: #444;
+      color: #fff;
+      width: 100%;
+      height: 60px;
+      @include flex(center, center);
+      margin-top: 15px;
+    }
+    .audio-controls {
+      @include flex(center, center);
+      width: 100%;
+      gap: 10px;
+      line-height: 0px;
+      svg {
+        fill: #fff;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      span {
+        width: 30px;
+        display: block;
+        margin-top: 2px;
+        letter-spacing: 1px;
+        font-weight: bold;
+      }
+    }
+  }
+}
