@@ -32,11 +32,14 @@ class App extends Component {
     });
   }
   handleClick = (e) => {
+    let display = document.querySelector(".display");
     e.target.firstElementChild.currentTime = 0;
     e.target.firstElementChild.play();
     e.target.classList.add("clicked");
+    display.classList.add("changed");
     setTimeout(() => {
       e.target.classList.remove("clicked");
+      display.classList.remove("changed");
     }, 100);
     this.setState({
       display: e.target.title,
@@ -76,7 +79,9 @@ class App extends Component {
       <div id="drum-machine" className="container">
         <h1>Drum Machine</h1>
         <DrumPads handleClick={this.handleClick} />
-        <div id="display">{this.state.display}</div>
+        <div id="display">
+          <span className="display">{this.state.display}</span>
+        </div>
         <AudioControls
           muted={this.state.muted}
           handleMute={this.handleMute}

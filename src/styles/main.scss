@@ -32,7 +32,7 @@ button {
 main {
   background-color: #333;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   @include flex(center, center);
   padding: 20px;
   .container {
@@ -85,6 +85,12 @@ main {
       height: 60px;
       @include flex(center, center);
       margin-top: 15px;
+      .display {
+        transition: 0.1s linear;
+        &.changed {
+          transform: scale(0.95);
+        }
+      }
     }
     .audio-controls {
       @include flex(center, center);
