@@ -65,9 +65,11 @@ class App extends Component {
     });
   };
   handleVolume = () => {
-    document.querySelectorAll(".clip").forEach((clip) => {
-      clip.volume = this.state.volume;
-    });
+    setTimeout(() => {
+      document.querySelectorAll(".clip").forEach((clip) => {
+        clip.volume = this.state.volume;
+      });
+    }, 100);
   };
   render() {
     return (

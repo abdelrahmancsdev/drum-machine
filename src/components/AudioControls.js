@@ -22,7 +22,6 @@ function AudioControls(props) {
         value={Math.round(props.volume * 100)}
         onInput={props.audioVolume}
         onChange={props.handleVolume}
-        onin
       />
       <span className="volume-value">{Math.round(props.volume * 100)}</span>
     </div>
